@@ -1,6 +1,9 @@
 Duktape Android
 ===============
 
+[Download AAR](./aar)
+
+
 The [Duktape embeddable JavaScript engine][duk] packaged for Android.
 
 Usage
