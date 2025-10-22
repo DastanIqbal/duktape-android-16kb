@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+
+android {
+  namespace 'com.example.duktape.octane'
+  compileSdkVersion rootProject.ext.compileSdkVersion
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
+  }
+
+  defaultConfig {
+    applicationId 'com.example.duktape.octane'
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion 34
+  }
+
+  signingConfigs {
+    javascript {
+      storeFile rootProject.file('javascript.keystore')
+      storePassword 'javascript'
+      keyAlias 'javascript'
+      keyPassword 'javascript'
+    }
+  }
+
+  buildTypes {
+    debug {
+      applicationIdSuffix '.debug'
+      signingConfig signingConfigs.javascript
+    }
+    release {
+      signingConfig signingConfigs.javascript
+    }
+  }
+  ndkVersion '29.0.13846066 rc3'
+}
+
+dependencies {
+  implementation project(':duktape')
+  implementation project(':quickjs')
+  implementation deps.okio
+}
